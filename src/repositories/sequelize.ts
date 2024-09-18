@@ -9,7 +9,7 @@ async function ensureDatabaseCreated(): Promise<void> {
         await sequelize.authenticate();
         initializeModels();
         createRelationships();
-        await sequelize.sync({ force: true });
+        await sequelize.sync();
     } catch (err) {
         console.error(err);
     }
