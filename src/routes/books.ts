@@ -11,6 +11,15 @@ router.get('/', async (_, res: Response<BookResponse[]>) => {
     res.status(200).json(response);
 });
 
+router.get('/author/:id', async (req: Request<void>, res: Response<BookResponse[]>) => {
+    if (!req.params.id) {
+        res.status(400).json();
+    }
+    
+    const response = await controller.getByAuthor(req.params.id!);
+    res.status(200).json(response);
+});
+
 router.post('/', async (req: Request<CreateBookRequest>, res: Response<BookResponse>) => {
     const response = await controller.create(req.body);
     res.status(200).json(response);

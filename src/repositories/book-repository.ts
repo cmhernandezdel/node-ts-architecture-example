@@ -12,6 +12,12 @@ export class BookRepository implements Repository<BookDto> {
         });
     }
 
+    findByAuthor(authorId: string): Promise<BookDto[]> {
+        return BookDto.findAll({
+            where: { authorId: authorId }
+        });
+    }
+
     insert(item: BookDto): Promise<BookDto> {
         return item.save();
     }
