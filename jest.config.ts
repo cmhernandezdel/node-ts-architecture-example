@@ -2,7 +2,7 @@ import type { Config } from "jest";
 
 const config: Config = {
   collectCoverage: true,
-  coverageDirectory: "__test__/coverage",
+  coverageDirectory: "__tests__/coverage",
   coveragePathIgnorePatterns: ["<rootDir>/node_modules/"],
   coverageThreshold: {
     global: {

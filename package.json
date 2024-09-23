@@ -2,10 +2,10 @@
   "name": "test-arquitectura-typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "src/server.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/server.js",
     "test": "jest"
   },
   "keywords": [],
