@@ -1,6 +1,6 @@
 import { AuthorRepository } from "../../../src/repositories/author-repository";
 import { AuthorModel } from "../../../src/repositories/models/author";
-import { getAll } from "../../../src/services/authors";
+import { getAll, getById } from "../../../src/services/authors";
 
 describe(`Authors controller`, () => {
 
@@ -15,7 +15,7 @@ describe(`Authors controller`, () => {
 
     it(`Should return all authors`, async () => {
         // Arrange
-        const models: AuthorModel[] = [
+        const models = [
             {
                 id: '1',
                 name: 'Author1',
@@ -55,5 +55,47 @@ describe(`Authors controller`, () => {
         expect(response.length).toBe(models.length);
         expect(AuthorRepository.prototype.findAll).toHaveBeenCalledTimes(1);
         
+    });
+
+    it(`Should return author by id`, async () => {
+        // Arrange
+        const model = {
+            id: '1',
+            name: 'Author1',
+            birthDate: new Date('1980-01-01'),
+            country: 'USA',
+            toEntity: jest.fn().mockReturnValue({
+                id: '1',
+                name: 'Author1',
+                birthDate: new Date('1980-01-01'),
+                country: 'USA'
+            })
+        } as unknown as AuthorModel;
+
+        jest.spyOn(AuthorRepository.prototype, 'find')
+            .mockImplementation(() => new Promise((resolve, _) => {
+                resolve(model);
+            }));
+
+        // Act
+        const response = await getById(model.id);
+
+        // Assert
+        expect(response).toBeTruthy();
+        expect(response!.id).toBe(model.id);
+    });
+
+    it(`Should return null when id is not found`, async () => {
+        // Arrange
+        jest.spyOn(AuthorRepository.prototype, 'find')
+            .mockImplementation(() => new Promise((resolve, _) => {
+                resolve(null);
+            }));
+
+        // Act
+        const response = await getById('1');
+
+        // Assert
+        expect(response).toBeNull();
     });
 });
