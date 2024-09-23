@@ -3,11 +3,11 @@ import { Book } from "../../entities/book";
 import { Genre } from "../../shared/enums/genre";
 
 export class BookDto extends Model {
-    declare id: string;
-    declare name: string;
-    declare publishDate: Date;
-    declare authorId: string;
-    declare genre: Genre;
+    declare readonly id: string;
+    declare readonly name: string;
+    declare readonly publishDate: Date;
+    declare readonly authorId: string;
+    declare readonly genre: Genre;
 
     toEntity(): Book {
         return ({ id: this.id, name: this.name, publishDate: this.publishDate, authorId: this.authorId, genre: this.genre });

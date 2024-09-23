@@ -2,10 +2,10 @@ import { DataTypes, Model } from "sequelize";
 import { Author } from "../../entities/author";
 
 export class AuthorDto extends Model {
-    declare id: string;
-    declare name: string;
-    declare birthDate?: Date;
-    declare country?: string;
+    declare readonly id: string;
+    declare readonly name: string;
+    declare readonly birthDate?: Date;
+    declare readonly country?: string;
 
     toEntity(): Author {
         return ({ id: this.id, name: this.name, birthDate: this.birthDate, country: this.country });

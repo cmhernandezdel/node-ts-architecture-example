@@ -21,7 +21,7 @@ export async function getById(id: string): Promise<Author | null> {
 
 export async function insert(request: CreateAuthorRequest) : Promise<Author> {
     const entity: Author = new Author(request.name, request.birthDate, request.country);
-    const dto: AuthorDto = new AuthorDto({id: entity.id, name: entity.name, birthDate: entity.birthDate, country: entity.country});
+    const dto: AuthorDto = new AuthorDto({ id: entity.id, name: entity.name, birthDate: entity.birthDate, country: entity.country });
     await authorRepository.insert(dto);
     return entity;
 }
