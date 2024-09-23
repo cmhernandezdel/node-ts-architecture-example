@@ -1,26 +1,26 @@
-import { AuthorDto } from "./models/author";
+import { AuthorModel } from "./models/author";
 import { Repository } from "./repository";
 
-export class AuthorRepository implements Repository<AuthorDto> {
-    findAll(): Promise<AuthorDto[]> {
-        return AuthorDto.findAll();
+export class AuthorRepository implements Repository<AuthorModel> {
+    findAll(): Promise<AuthorModel[]> {
+        return AuthorModel.findAll();
     }
 
-    find(id: string): Promise<AuthorDto | null> {
-        return AuthorDto.findOne({
+    find(id: string): Promise<AuthorModel | null> {
+        return AuthorModel.findOne({
             where: { id: id }
         });
     }
 
-    insert(item: AuthorDto): Promise<AuthorDto> {
+    insert(item: AuthorModel): Promise<AuthorModel> {
         return item.save();
     }
 
-    update(item: AuthorDto): Promise<AuthorDto> {
+    update(item: AuthorModel): Promise<AuthorModel> {
         return item.save();
     }
 
-    delete(item: AuthorDto): Promise<void> {
+    delete(item: AuthorModel): Promise<void> {
         return item.destroy();
     }
 }

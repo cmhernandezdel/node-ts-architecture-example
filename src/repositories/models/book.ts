@@ -2,7 +2,7 @@ import { DataTypes, Model } from "sequelize";
 import { Book } from "../../entities/book";
 import { Genre } from "../../shared/enums/genre";
 
-export class BookDto extends Model {
+export class BookModel extends Model {
     declare readonly id: string;
     declare readonly name: string;
     declare readonly publishDate: Date;

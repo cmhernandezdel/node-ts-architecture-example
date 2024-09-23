@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
-import { AuthorDto, Schema as AuthorSchema, TableName as AuthorTableName } from "./models/author";
-import { BookDto, Schema as BookSchema, TableName as BookTableName } from "./models/book";
+import { AuthorModel, Schema as AuthorSchema, TableName as AuthorTableName } from "./models/author";
+import { BookModel, Schema as BookSchema, TableName as BookTableName } from "./models/book";
 
 const sequelize = new Sequelize("postgres://admin:admin@postgres:5432/book-database");
 
@@ -16,13 +16,13 @@ async function ensureDatabaseCreated(): Promise<void> {
 }
 
 function initializeModels(): void {
-    AuthorDto.init(AuthorSchema, { sequelize: sequelize, tableName: AuthorTableName });
-    BookDto.init(BookSchema, { sequelize: sequelize, tableName: BookTableName });
+    AuthorModel.init(AuthorSchema, { sequelize: sequelize, tableName: AuthorTableName });
+    BookModel.init(BookSchema, { sequelize: sequelize, tableName: BookTableName });
 }
 
 function createRelationships(): void {
-    AuthorDto.hasMany(BookDto, { as: "books", foreignKey: "authorId" });
-    BookDto.belongsTo(AuthorDto, { as: "author", foreignKey: "authorId" });
+    AuthorModel.hasMany(BookModel, { as: "books", foreignKey: "authorId" });
+    BookModel.belongsTo(AuthorModel, { as: "author", foreignKey: "authorId" });
 }
 
 export { ensureDatabaseCreated };

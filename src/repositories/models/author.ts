@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import { Author } from "../../entities/author";
 
-export class AuthorDto extends Model {
+export class AuthorModel extends Model {
     declare readonly id: string;
     declare readonly name: string;
     declare readonly birthDate?: Date;

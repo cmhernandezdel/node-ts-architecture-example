@@ -1,32 +1,32 @@
-import { BookDto } from "./models/book";
+import { BookModel } from "./models/book";
 import { Repository } from "./repository";
 
-export class BookRepository implements Repository<BookDto> {
-    findAll(): Promise<BookDto[]> {
-        return BookDto.findAll();
+export class BookRepository implements Repository<BookModel> {
+    findAll(): Promise<BookModel[]> {
+        return BookModel.findAll();
     }
 
-    find(id: string): Promise<BookDto | null> {
-        return BookDto.findOne({
+    find(id: string): Promise<BookModel | null> {
+        return BookModel.findOne({
             where: { id: id }
         });
     }
 
-    findByAuthor(authorId: string): Promise<BookDto[]> {
-        return BookDto.findAll({
+    findByAuthor(authorId: string): Promise<BookModel[]> {
+        return BookModel.findAll({
             where: { authorId: authorId }
         });
     }
 
-    insert(item: BookDto): Promise<BookDto> {
+    insert(item: BookModel): Promise<BookModel> {
         return item.save();
     }
 
-    update(item: BookDto): Promise<BookDto> {
+    update(item: BookModel): Promise<BookModel> {
         return item.save();
     }
 
-    delete(item: BookDto): Promise<void> {
+    delete(item: BookModel): Promise<void> {
         return item.destroy();
     }
 }

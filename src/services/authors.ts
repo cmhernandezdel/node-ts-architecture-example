@@ -1,12 +1,12 @@
 import { Author } from "../entities/author";
 import { AuthorRepository } from "../repositories/author-repository";
-import { AuthorDto } from "../repositories/models/author";
+import { AuthorModel } from "../repositories/models/author";
 import { CreateAuthorRequest } from "../routes/requests/authors/create-author";
 
 const authorRepository = new AuthorRepository();
 
 export async function getAll(): Promise<Author[]> {
-    const dtos: AuthorDto[] = await authorRepository.findAll();
+    const dtos: AuthorModel[] = await authorRepository.findAll();
     return dtos.map(d => d.toEntity());
 }
 
@@ -21,7 +21,7 @@ export async function getById(id: string): Promise<Author | null> {
 
 export async function insert(request: CreateAuthorRequest) : Promise<Author> {
     const entity: Author = new Author(request.name, request.birthDate, request.country);
-    const dto: AuthorDto = new AuthorDto({ id: entity.id, name: entity.name, birthDate: entity.birthDate, country: entity.country });
+    const dto: AuthorModel = new AuthorModel({ id: entity.id, name: entity.name, birthDate: entity.birthDate, country: entity.country });
     await authorRepository.insert(dto);
     return entity;
 }
