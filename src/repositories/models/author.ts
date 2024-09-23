@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { Author } from "../../models/author";
+import { Author } from "../../entities/author";
 
 export class AuthorDto extends Model {
     declare id: string;

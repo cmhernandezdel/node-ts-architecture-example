@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
-import { AuthorDto, Schema as AuthorSchema, TableName as AuthorTableName } from "./dto/author";
-import { BookDto, Schema as BookSchema, TableName as BookTableName } from "./dto/book";
+import { AuthorDto, Schema as AuthorSchema, TableName as AuthorTableName } from "./models/author";
+import { BookDto, Schema as BookSchema, TableName as BookTableName } from "./models/book";
 
 const sequelize = new Sequelize("postgres://admin:admin@postgres:5432/book-database");
 

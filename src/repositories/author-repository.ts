@@ -1,4 +1,4 @@
-import { AuthorDto } from "./dto/author";
+import { AuthorDto } from "./models/author";
 import { Repository } from "./repository";
 
 export class AuthorRepository implements Repository<AuthorDto> {

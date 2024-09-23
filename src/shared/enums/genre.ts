@@ -1,10 +1,10 @@
 export enum Genre {
-    Fantasy,
-    Mystery,
-    Horror,
-    Historical,
-    ScienceFiction,
-    Romance,
-    Children,
-    Others
+    Fantasy = "fantasy",
+    Mystery = "mystery",
+    Horror = "horror",
+    Historical = "historical",
+    ScienceFiction = "sci-fi",
+    Romance = "romance",
+    Children = "children",
+    Others = "unknown"
 }

@@ -1,14 +1,16 @@
 import { DataTypes, Model } from "sequelize";
-import { Book } from "../../models/book";
+import { Book } from "../../entities/book";
+import { Genre } from "../../shared/enums/genre";
 
 export class BookDto extends Model {
     declare id: string;
     declare name: string;
     declare publishDate: Date;
     declare authorId: string;
+    declare genre: Genre;
 
     toEntity(): Book {
-        return ({ id: this.id, name: this.name, publishDate: this.publishDate, authorId: this.authorId });
+        return ({ id: this.id, name: this.name, publishDate: this.publishDate, authorId: this.authorId, genre: this.genre });
     }
 }
 
@@ -24,6 +26,10 @@ export const Schema = {
     },
     publishDate: {
         type: DataTypes.DATEONLY,
+        allowNull: false
+    },
+    genre: {
+        type: DataTypes.ENUM(...Object.values(Genre)),
         allowNull: false
     }
 };

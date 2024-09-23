@@ -1,7 +1,7 @@
-import { Author } from "../models/author";
+import { Author } from "../entities/author";
 import { AuthorRepository } from "../repositories/author-repository";
-import { AuthorDto } from "../repositories/dto/author";
-import { CreateAuthorRequest } from "../controllers/requests/authors/create-author";
+import { AuthorDto } from "../repositories/models/author";
+import { CreateAuthorRequest } from "../routes/requests/authors/create-author";
 
 const authorRepository = new AuthorRepository();
 

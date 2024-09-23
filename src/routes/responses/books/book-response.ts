@@ -1,4 +1,4 @@
-import { Book } from "../../../models/book";
+import { Book } from "../../../entities/book";
 
 export class BookResponse {
     id: string;

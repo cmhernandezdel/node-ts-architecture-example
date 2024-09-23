@@ -1,8 +1,7 @@
-import { BookResponse } from "./responses/books/book-response";
+import { BookResponse } from "../routes/responses/books/book-response";
 import * as booksService from "../services/books";
 import * as authorsService from "../services/authors";
-import { CreateBookRequest } from "./requests/books/create-book";
-import {} from 'uuid';
+import { CreateBookRequest } from "../routes/requests/books/create-book";
 
 export async function getAll(): Promise<BookResponse[]> {
     const books = await booksService.getAll();
@@ -12,7 +11,7 @@ export async function getAll(): Promise<BookResponse[]> {
 
 export async function getByAuthor(id: string): Promise<BookResponse[]> {
     const author = await authorsService.getById(id);
-    
+
     if (!author) {
         return [];
     }

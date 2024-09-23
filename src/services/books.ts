@@ -1,8 +1,8 @@
-import { Book } from "../models/book";
+import { Book } from "../entities/book";
 import { BookRepository } from "../repositories/book-repository";
-import { BookDto } from "../repositories/dto/book";
-import { CreateBookRequest } from "../controllers/requests/books/create-book";
-import { Author } from "../models/author";
+import { BookDto } from "../repositories/models/book";
+import { CreateBookRequest } from "../routes/requests/books/create-book";
+import { Author } from "../entities/author";
 
 const bookRepository = new BookRepository();
 
@@ -17,8 +17,8 @@ export async function getByAuthor(author: Author) : Promise<Book[]> {
 }
 
 export async function insert(request: CreateBookRequest): Promise<Book> {
-    const entity: Book = new Book(request.name, request.publishDate, request.authorId);
-    const dto: BookDto = new BookDto({id: entity.id, authorId: entity.authorId, name: entity.name, publishDate: entity.publishDate});
+    const entity: Book = new Book(request.name, request.publishDate, request.authorId, request.genre);
+    const dto: BookDto = new BookDto({ id: entity.id, authorId: entity.authorId, name: entity.name, publishDate: entity.publishDate, genre: entity.genre });
     await bookRepository.insert(dto);
     return entity;
 }

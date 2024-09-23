@@ -1,5 +1,5 @@
-import { CreateAuthorRequest } from "./requests/authors/create-author";
-import { AuthorResponse } from "./responses/authors/author-response";
+import { CreateAuthorRequest } from "../routes/requests/authors/create-author";
+import { AuthorResponse } from "../routes/responses/authors/author-response";
 import * as authorsService from "../services/authors";
 
 export async function getAll(): Promise<AuthorResponse[]> {

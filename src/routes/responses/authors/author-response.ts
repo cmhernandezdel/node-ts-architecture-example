@@ -1,4 +1,4 @@
-import { Author } from "../../../models/author";
+import { Author } from "../../../entities/author";
 
 export class AuthorResponse {
     id: string;
