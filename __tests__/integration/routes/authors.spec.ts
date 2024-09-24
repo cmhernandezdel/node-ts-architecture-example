@@ -1,11 +1,15 @@
 import request from "supertest";
 import app from "../../../src/app";
+import { ensureDatabaseCreated } from "../../../src/repositories/sequelize";
 
 describe("GET /authors", () => {
-    jest.setTimeout(10000 * 100); // Aumenta el tiempo de espera de las pruebas
+
+    beforeAll(async () => {
+        await ensureDatabaseCreated();
+    });    
     
     it("Should return 200", async () => {
-        const response = await request(app).get("/authors").send();
+        const response = await request(app).get("/authors");
         expect(response.statusCode).toEqual(200);
     })
 });

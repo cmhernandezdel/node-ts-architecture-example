@@ -1,8 +1,9 @@
 import { Sequelize } from "sequelize";
 import { AuthorModel, Schema as AuthorSchema, TableName as AuthorTableName } from "./models/author";
 import { BookModel, Schema as BookSchema, TableName as BookTableName } from "./models/book";
+import config from "../config";
 
-const sequelize = new Sequelize("postgres://admin:admin@postgres:5432/book-database");
+const sequelize = new Sequelize(config.database.connection);
 
 async function ensureDatabaseCreated(): Promise<void> {
     try {
